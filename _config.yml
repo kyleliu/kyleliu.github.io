@@ -1,0 +1,14 @@
+markdown: rdiscount
+permalink: /:title/
+url: http://kyleliu.github.io
+name: Kyle's Notes
+author: Kyle
+email: justfavme@gmail.com
+weibo: 1088817101
+duoshuo: kyleliu
+cnzz: 1252987783
+github: kyleliu
+pygments: true
+safe: true
+paginate: 10
+about: "一头程序猿！"
