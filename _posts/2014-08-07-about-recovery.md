@@ -5,9 +5,12 @@ categories: 开发
 tags: Android Recovery
 ---
 
-# 进入RECOVER的方式
 
-### 恢复出厂设置
+# 进入RECOVERY的方式
+
+
+#### 恢复出厂设置
+
 
 1. 主系统下用户选择“恢复出厂设置”
 2. 主系统写入命令“--wipe_data”到文件/cache/recovery/command
@@ -17,7 +20,9 @@ tags: Android Recovery
 6. 完成动作后擦除BCB信息
 7. 重启进入主系统
 
-### OTA升级
+
+#### OTA升级
+
 
 1. 主系统接收升级服务器推送包，存入/cache/xxx.zip
 2. 主系统写入命令“--update_package=/cache/xxx.zip”到文件/cache/recovery/command
@@ -37,7 +42,9 @@ tags: Android Recovery
 	8. recovery擦除BCB
 9. 重启系统
 
-### USB升级
+
+#### USB升级
+
 
 1. 插入U盘，重启系统
 2. bootloader检查U盘根目录是否有文件recovery.command
@@ -45,7 +52,9 @@ tags: Android Recovery
 4. 引导进入recovery
 5. 其它同OTA升级
 
+
 # BCB(bootloader control block)格式说明
+
 
 1. 总共分为三个部分：command/status/recovery，其中command占用32字节，status占用32字节，recovery占用1024字节
 2. BCB保存在misc分区里，对于nand来它占用3个页面大小，但实际数据存在于第2个页面上，读取和写入时要特别注意保持一致，mmc则直接按顺序存储
@@ -59,7 +68,9 @@ tags: Android Recovery
 	* --set_encrypted_filesystem=on|off － 文件系统是否加密
 	* --just_exit － 不做任何其它事情
 
+
 # bootloader的实现
+
 
 每个平台都有自己的bootloader，基本上都是基于u-boot的某个版本的深度定制版本，理论上我们可以使用u-boot来统一bootloader的实现，但考虑到有的平台私货太多，支持又差，统一起来有很大的压力，所以暂时还是采用各家的私有bootloader，但是为了达到平台的表现一致性，特提出bootloader的一般性功能规范：
 
