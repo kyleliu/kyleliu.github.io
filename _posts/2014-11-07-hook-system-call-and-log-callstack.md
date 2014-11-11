@@ -70,6 +70,8 @@ linux(android)的动态库loader有一种机制，可以通过指定环境变量
 
 编译链接成功后，得到一个动态库，假设保存在目标板的/system/lib/libdbg.so，使用时可以在init.rc中需要调试的进程前加上LD_PRELOAD=/system/lib/libdbg.so，如：
 
-	service zygote LD_PRELOAD=/system/lib/libdbg.so /system/bin/app_process ...   		...
+	service zygote /system/bin/app_process
+		setenv LD_PRELOAD /system/lib/libdbg.so
+		...
 
 当然，由于zygote服务进程负责派生所有其他应用进程，因此所有这些进程对pipe的调用都会打印出来，会有很多，因此需要我们在pipe的跟踪函数中过滤那些我们不需要的进程，可以通过进程号或者进程名称等手段过滤。
